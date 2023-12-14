@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialogue avec l'Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="assistant-container">
+      <div>
+      <h2>Pitchez votre projet en 5 minutes !</h2>
+        <button id="startBtn">Commencer l'Enregistrement</button>
+        <button id="stopBtn" disabled>Arrêter l'Enregistrement</button>
+        <br/>
+        <canvas id="visualizer"></canvas>
+        <br/>
+        <audio id="audio" controls></audio>
+        <div id="loading" style="display:true;">Attente de la réponse...</div>
+    </div>
+    <br/>
+    <br/>
+
+    <h2>Votre Pitch Deck</h2>
+    <input type="file" id="pitchDeck" accept=".pdf">
+    <button id="uploadBtn">Télécharger le Pitch Deck</button>
+
+    <script src="assistant.js"></script>
+</body>
+</html>

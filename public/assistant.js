@@ -12,6 +12,34 @@ let dataArray;
 const canvas = document.getElementById("visualizer");
 const canvasCtx = canvas.getContext("2d");
 
+//Implementing the Start/Stop for lottie avatar
+let player = document.querySelector("#lottie");
+let startButton = document.querySelector("#startBtn");
+let stopButton = document.querySelector("#stopBtn");
+
+//Implementing the Start/Stop for lottie avatar
+startButton.onclick = function() {
+    player.play();
+};
+
+stopButton.onclick = function() {
+    player.stop();
+};
+
+//Implementing Hide/Show for Start/Stop Button
+document.getElementById('startBtn').addEventListener('click', function() {
+    this.style.display = 'none';
+    document.getElementById('stopBtn').style.display = 'flex';
+    document.getElementById('loading').style.display = 'none';
+});
+
+document.getElementById('stopBtn').addEventListener('click', function() {
+    this.style.display = 'none';
+    document.getElementById('startBtn').style.display = 'flex';
+    document.getElementById('loading').style.display = 'flex';
+});
+
+
 function startRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {

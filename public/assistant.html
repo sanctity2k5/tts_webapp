@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dialogue avec l'Assistant</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="assistant-container">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player id="lottie" src="https://lottie.host/6e2c3421-f8bc-4569-bb01-9044d3281632/UqtDL3rzpo.json" background="transparent" speed="1" style="width: 200px; height: 150px;" loop></dotlottie-player>
       <div>
       <h2>Pitchez votre projet en 5 minutes !</h2>
-        <button id="startBtn">Commencer l'Enregistrement</button>
-        <button id="stopBtn" disabled>Arrêter l'Enregistrement</button>
+        <button id="startBtn">Commencer l'Enregistrement <img src="./assets/play.svg" alt="play-icon" /></button>
+        <button id="stopBtn" disabled style="display: none;">Arrêter l'Enregistrement <img src="./assets/stop.svg" alt="stop-icon" /></button>
         <br/>
         <canvas id="visualizer"></canvas>
         <br/>
         <audio id="audio" controls></audio>
-        <div id="loading" style="display:true;">Attente de la réponse...</div>
+        <div id="loading" style="display:none;">Attente de la réponse... <img src="./assets/spinner.svg" alt="spinner-icon" style="color: #000000;" /></div>
     </div>
     <br/>
     <br/>

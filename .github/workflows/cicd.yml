@@ -13,14 +13,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # specify the node version
+          node-version: '18' # specify the node version
 
       - name: Install dependencies
         run: npm install # or use 'yarn install' if you are using yarn
-
-      # Add your job steps here
-      - name: Build
-        run: npm run build # or use 'yarn build' if you are using yarn
 
       - name: Test
         run: npm test # or use 'yarn test' if you are using yarn

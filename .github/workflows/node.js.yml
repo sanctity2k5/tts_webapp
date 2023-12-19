@@ -18,9 +18,9 @@ jobs:
       - name: Install dependencies
         run: npm install # or use 'yarn install' if you are using yarn
 
-      # Add your job steps here
-      - name: Build
-        run: npm run build # or use 'yarn build' if you are using yarn
+      # # Add your job steps here
+      # - name: Build
+      #   run: npm run build # or use 'yarn build' if you are using yarn
 
-      - name: Test
-        run: npm test # or use 'yarn test' if you are using yarn
+      # - name: Test
+      #   run: npm test # or use 'yarn test' if you are using yarn

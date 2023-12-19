@@ -1,0 +1,33 @@
+name: My Workflow
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # specify the node version
+
+      - name: Install Node.js dependencies
+        run: npm install # or use 'yarn install' if you are using yarn
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' # specify the python version
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Node.js script
+        run: npm run your-node-script # replace with your Node.js script
+
+      - name: Run Python script
+        run: python your-python-script.py # replace with your Python script

@@ -189,6 +189,7 @@ function visualizeAudio(analyser) {
     draw();
 }
 
+
 startBtn.addEventListener('click', startRecording);
 stopBtn.addEventListener('click', stopRecording);
 uploadBtn.addEventListener('click', uploadPitchDeck);

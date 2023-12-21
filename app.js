@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const multer = require('multer');
 const axios = require('axios');
+const bodyParser = require('body-parser');
 const FormData = require('form-data');
 const stream = require('stream');
 const fs = require('fs');
@@ -10,6 +11,12 @@ const port = 3000;
 const path = require('path');
 const { exec } = require('child_process');
 const { v4: uuidv4 } = require('uuid');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -32,6 +39,24 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // Mettez à true si vous êtes derrière un proxy HTTPS
 }));
+
+//GumRoad Licence verification
+app.post('/verifyLicense', async (req, res) => {
+    try {
+        const licenseKey = req.body.licenseKey; // Assuming you're sending the license key in the request body
+        const response = await axios.post('https://api.gumroad.com/v2/licenses/verify', {
+            product_id: '3hALpPHLUl2rzDGzc4WsFw==',
+            license_key: licenseKey,
+            increment_uses_count: true
+        });
+        res.json({ success: response.data.success });
+    } catch (error) {
+        console.error('Error verifying license:', error);
+        res.status(500).send('Error verifying license');
+    }
+});
+
+  
 
 // Route pour gérer le téléchargement de fichiers
 app.post('/uploadAudio', upload.single('audioFile'), async (req, res) => {

@@ -3,6 +3,9 @@ body, html {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+a {
+    text-decoration: none;
+}
 
 .landing-container {
     display: flex;
@@ -17,7 +20,7 @@ body, html {
     text-align: center;
 }
 
-#startButton, #stopButton, #startBtn, #stopBtn {
+.startButton, .stopButton, #startBtn, #stopBtn {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -37,24 +40,26 @@ body, html {
     gap: 6px;
 }
 
-#startButton, #stopButton {
+.startButton, .stopButton {
     color: white;
     border-radius: 6px;
+    height: 44px;
 }
 
-#startButton:hover {
+.startButton:hover {
     background-color: rgb(25, 88, 190);
 }
 
-#stopButton {
-    background-color: #fff;
-    border: 2px solid rgb(47, 121, 240);
-    color : rgb(47, 121, 240);
+.stopButton {
+    background-color: #f0f0f0;
+    color : black;
+    box-shadow: #f0f0f0;
+    box-shadow: outset 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-#stopButton:hover {
-    background-color: #f0f0f0;
-    color: #000;
+.stopButton:hover {
+    background-color: #f5eeee;
+    border: 3px solid rgb(25, 88, 190);
 }
 
 .assistant-container {
@@ -84,4 +89,50 @@ body, html {
     margin-top: 20px;
     font-weight: bold;
     gap: 6px;
+}
+
+/* Modal for license key input */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .errorMessage{
+    color: red;
+    font-size: 12px;
+  }
+  .errorContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  #licenseInput {
+    width: 100%;
+    height: 28px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }

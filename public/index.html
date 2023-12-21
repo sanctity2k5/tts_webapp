@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assistant Startup</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="landing-container">
-        <h1 class="welcomeText">Bienvenue sur l'Assistant Startup</h1>
-        <div class="licenseButtons">
-        <button id="startButton">Acheter des licences</button>
-        <button id="stopButton">Utiliser des licences</button>
-    </div>
+      <h1 class="welcomeText">Bienvenue sur l'Assistant Startup</h1>
+      <div class="licenseButtons">
+        <a href="https://serenity838.gumroad.com/l/jhuppm" target="_blank">
+          <button id="buyLicense" class="startButton">
+            Acheter des licences
+          </button>
+        </a>
+        <button id="useLicense" class="stopButton" onclick="openModal()">
+          Utiliser des licences
+        </button>
+      </div>
     </div>
 
-    <script>
-        document.getElementById('startButton').addEventListener('click', () => {
-            window.location.href = 'assistant.html';
-        });
-    </script>
-</body>
+    <!--Liscence Key Modal -->
+    <div id="licenseModal" class="modal">
+      <p id="errorMessage" class="errorMessage"></p>
+      <input
+        type="text"
+        placeholder="Enter your License Key Here"
+        id="licenseInput"
+      />
+      <div class="licenseButtons">
+        <button id="use" class="startButton" onclick="verifyLicense()">
+          Utiliser des licences
+        </button>
+        <button class="stopButton" onclick="closeModal()">Annuler</button>
+      </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+   
+    <script src="index.js"></script>
+  </body>
 </html>

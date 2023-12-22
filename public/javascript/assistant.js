@@ -39,6 +39,18 @@ document.getElementById('stopBtn').addEventListener('click', function() {
     document.getElementById('loading').style.display = 'flex';
 });
 
+//Expriring the license key after one usage
+// document.getElementById("expireButton").addEventListener("click", function() {
+//     var licenseKey = document.getElementById("licenseInput").value;
+//     fetch("https://yourserver.com/expireLicense", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify({ licenseKey: licenseKey })
+//     });
+//   });
+
 
 function startRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true })

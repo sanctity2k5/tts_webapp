@@ -60,7 +60,7 @@ function openModal() {
   console.log("Success============>", data);
   if (data.success) {
     // License key is valid, proceed to the next page
-    window.location.href = "assistant.html";
+    window.location.href = "./assistant.html";
   } else {
     // License key is not valid, show an error message
   }

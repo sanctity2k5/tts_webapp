@@ -10,13 +10,10 @@
     <div class="landing-container">
       <h1 class="welcomeText">Bienvenue sur l'Assistant Startup</h1>
       <div class="licenseButtons">
-        <a href="https://serenity838.gumroad.com/l/jhuppm" target="_blank">
-          <button id="buyLicense" class="startButton">
-            Acheter des licences
-          </button>
-        </a>
+        <script src="https://gumroad.com/js/gumroad.js"></script>
+        <a class="gumroad-button" href="https://gardenerleo.gumroad.com/l/ctxov" data-gumroad-overlay-checkout="true">Buy License</a>
         <button id="useLicense" class="stopButton" onclick="openModal()">
-          Utiliser des licences
+          Use License
         </button>
       </div>
     </div>
@@ -38,6 +35,6 @@
     </div>
     <div id="overlay" class="overlay"></div>
    
-    <script src="index.js"></script>
+    <script src="./javascript/index.js"></script>
   </body>
 </html>

@@ -11,7 +11,7 @@
       <h1 class="welcomeText">Bienvenue sur l'Assistant Startup</h1>
       <div class="licenseButtons">
         <script src="https://gumroad.com/js/gumroad.js"></script>
-        <a class="gumroad-button" href="https://gardenerleo.gumroad.com/l/ctxov" data-gumroad-overlay-checkout="true">Buy License</a>
+        <a class="gumroad-button" href="https://gardenerleo.gumroad.com/l/ctxov">Buy License</a>
         <button id="useLicense" class="stopButton" onclick="openModal()">
           Use License
         </button>
@@ -27,10 +27,10 @@
         id="licenseInput"
       />
       <div class="licenseButtons">
-        <button id="use" class="startButton" onclick="verifyLicense()">
-          Utiliser des licences
+        <button id="use" class="startButton" onclick="verifyLicense(e)">
+          Use License
         </button>
-        <button class="stopButton" onclick="closeModal()">Annuler</button>
+        <button class="stopButton" onclick="closeModal()">Cancel</button>
       </div>
     </div>
     <div id="overlay" class="overlay"></div>

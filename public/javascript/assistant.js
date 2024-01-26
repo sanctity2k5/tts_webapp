@@ -41,18 +41,6 @@ document.getElementById("stopBtn").addEventListener("click", function () {
 });
 
 
-//Toggle the settings dropdown
-
-// function toggleDropdown() {
-//   var dropdownContent = document.getElementById("dropdown-content");
-//   if (dropdownContent.style.display === "none") {
-//     dropdownContent.style.display = "flex";
-//   } else {
-//     dropdownContent.style.display = "none";
-//   }
-// }
-
-
 //Opening and closing the popup when the license is verified
 function showPopup() {
   document.getElementById('licenseModal').style.display = 'flex';

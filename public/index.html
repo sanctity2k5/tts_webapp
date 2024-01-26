@@ -8,6 +8,9 @@
   </head>
   <body>
     <div class="landing-container">
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/2c3de598-a563-4a9e-82b9-d81d611e80b9/cmRc5CxHyE.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
       <h1 class="welcomeText">Bienvenue sur l'Assistant Startup</h1>
       <div class="licenseButtons">
         <script src="https://gumroad.com/js/gumroad.js"></script>
@@ -30,7 +33,7 @@
         <button id="use" class="startButton" onclick="verifyLicense(e)">
           Use License
         </button>
-        <button class="stopButton" onclick="closeModal()">Cancel</button>
+        <button class="cancelButton" onclick="closeModal()">Cancel</button>
       </div>
     </div>
     <div id="overlay" class="overlay"></div>

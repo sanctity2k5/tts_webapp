@@ -8,27 +8,70 @@
     
 </head>
 <body>
+
+    <div class="assistant-modal" id="licenseModal">
+        <div class="popup">
+            <div class="img-container">
+            <!-- <img src="/assets/setting.png" class="settings-img" onclick="toggleDropdown()" alt="settings" /> -->
+            <div id="dropdown-content" class="dropdown-content">
+                <label class="settings-title" for="languageSelect">Language</label>
+                    <select id="languageSelect" name="language">
+                        <option value="english">EN</option>
+                        <option value="french">FR</option>
+                    </select>
+
+                <h1 class="settings-title">Startup Name</h1>
+                <h1 class="settings-title">Your Name</h1>
+                <form id="yourName" name="yourName" class="radio">
+                    <input type="radio" id="name1" name="name" value="name1">
+                    <label for="name1">Improve</label><br>
+                    <input type="radio" id="name2" name="name" value="name2">
+                    <label for="name2">Train</label>
+                  </form>   
+              </div>
+        </div>
+            <p>Streamline your project pitches by purchasing a Gumroad license for exclusive features. Record audio, upload PDFs, and receive instant feedback with an audio file response. </p>
+            <h2>Votre Pitch Deck</h2>
+            <div class="pitch-deck">
+            <input type="file" id="pitchDeck" accept=".pdf">
+            <button id="uploadBtn" onclick="showPitchPopup()">Télécharger le Pitch Deck</button>
+        </div>
+
+            <button class="close-assistance-modal" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+
+    <div class="pitch-deck-modal" id="pitchDeck-popup">
+        <div class="popup">
+            <p>Proceeding will end your license and finalize your pitch. Confirm to continue. </p>
+            <button id="uploadBtn-proceed" onclick="updateLicense(); closePitchPopup()">Proceed</button>
+            <button id="uploadBtn-cancel" onclick="closePitchPopup()">Cancel</button>
+        </div>
+        </div>
+    </div>
+
+    
     <div class="assistant-container">
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
     <dotlottie-player id="lottie" src="https://lottie.host/6e2c3421-f8bc-4569-bb01-9044d3281632/UqtDL3rzpo.json" background="transparent" speed="1" style="width: 200px; height: 150px;" loop></dotlottie-player>
       <div>
       <h2>Pitchez votre projet en 5 minutes !</h2>
-        <button id="startBtn">Commencer l'Enregistrement <img src="/assets/play.svg" alt="play-icon" /></button>
+        <button id="startBtn" onclick="updateLicense()">Commencer l'Enregistrement <img src="/assets/play.svg" alt="play-icon" /></button>
         <button id="stopBtn" disabled style="display: none;">Arrêter l'Enregistrement <img src="/assets/stop.svg" alt="stop-icon" /></button>
         <br/>
         <canvas id="visualizer"></canvas>
         <br/>
         <audio id="audio" controls></audio>
         <div id="loading" style="display:none;">Attente de la réponse... <img src="/assets/spinner.svg" alt="spinner-icon" style="color: #000000;" /></div>
+
+
+        <button id="startBtn" class="uploadBtn-proceed" onclick="showPopup()">Upload Pitch Deck</button>
     </div>
     <br/>
     <br/>
-
-    <h2>Votre Pitch Deck</h2>
-    <input type="file" id="pitchDeck" accept=".pdf">
-    <button id="uploadBtn">Télécharger le Pitch Deck</button>
-
     <script src="../javascript/assistant.js"></script>
 </body>
 </html>

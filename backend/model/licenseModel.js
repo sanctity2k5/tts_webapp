@@ -6,7 +6,6 @@ const licenseSchema = new mongoose.Schema({
   licenseKey: {
     type: String,
     required: [true, "Please input your license key"],
-    // unique: true,
   },
   expired: {
     type: Boolean,

@@ -53,7 +53,11 @@ async function verifyLicense(e) {
     });
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      if (response.status === 403) {
+        handleInvalidLicense();
+      } else {
+        throw new Error("Something went wrong");
+      } 
     }
 
     const data = await response.json();
@@ -62,10 +66,12 @@ async function verifyLicense(e) {
     if (data.status === "success") {
       handleValidLicense();
     } else {
-      handleInvalidLicense();
+      handleInvalidLicense(data.error);
+      console.log("Error:", data.error);
     }
   } catch (error) {
-    handleInvalidLicense();
+    handleInvalidLicense(error.message);
+    console.log("Error:", error.message);
   }
 }
 

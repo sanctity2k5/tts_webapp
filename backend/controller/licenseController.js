@@ -24,17 +24,29 @@ exports.createLicenseKey = catchAsync(async (req, res) => {
     }
   );
 
-  // console.log("response===========>", response.data.success);
-
   if (response.data.success) {
-    const newLicenseKey = await License.create(req.body);
+    // Check if the license key already exists in the database
+    const existingLicenseKey = await License.findOne({ licenseKey: req.body.licenseKey });
 
-    res.status(201).json({
-      status: "success",
-      data: {
-        licenseKey: newLicenseKey,
-      },
-    });
+    if (existingLicenseKey  && existingLicenseKey.expired === false) {
+      // If the license key already exists, send a success response
+      res.status(200).json({
+        status: "success",
+        data: {
+          licenseKey: existingLicenseKey,
+        },
+      });
+    } else {
+      // If the license key does not exist, create a new one
+      const newLicenseKey = await License.create(req.body);
+
+      res.status(201).json({
+        status: "success",
+        data: {
+          licenseKey: newLicenseKey,
+        },
+      });
+    }
   } else {
     res.status(400).json({
       status: "fail",
@@ -58,7 +70,7 @@ exports.protectRoute = catchAsync(async (req, res, next) => {
       next();
     } else {
       // License is either not found, expired, or invalid
-      res.redirect("/index.html");
+      res.status(403).json({ error: "Expired or invalid license" });
     }
   } catch (error) {
     // Handle any errors that occurred during the license lookup

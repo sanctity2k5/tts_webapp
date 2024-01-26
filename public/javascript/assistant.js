@@ -1,7 +1,7 @@
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const audio = document.getElementById("audio");
-const uploadBtn = document.getElementById("uploadBtn");
+const uploadBtn = document.getElementById("uploadBtn-proceed");
 
 let recorder;
 let audioStream;
@@ -37,10 +37,76 @@ document.getElementById("stopBtn").addEventListener("click", function () {
   this.style.display = "none";
   document.getElementById("startBtn").style.display = "flex";
   document.getElementById("loading").style.display = "flex";
+  SpeechToGPTToTTS();
 });
 
+
+//Toggle the settings dropdown
+
+// function toggleDropdown() {
+//   var dropdownContent = document.getElementById("dropdown-content");
+//   if (dropdownContent.style.display === "none") {
+//     dropdownContent.style.display = "flex";
+//   } else {
+//     dropdownContent.style.display = "none";
+//   }
+// }
+
+
+//Opening and closing the popup when the license is verified
+function showPopup() {
+  document.getElementById('licenseModal').style.display = 'flex';
+}
+
+// Function to close the popup
+function closePopup() {
+  document.getElementById('licenseModal').style.display = 'none';
+  window.location.href = "/";
+}
+
+//Opening and closing the pitchdeck popup to use the license
+// Opening and closing the pitchdeck popup to use the license
+function showPitchPopup() {
+  // Get the input element for file selection
+  var fileInput = document.getElementById('pitchDeck');
+
+  // Check if a file is selected
+  if (fileInput.files.length > 0) {
+    // Get the selected file
+    var selectedFile = fileInput.files[0];
+
+    // Check if the selected file is a PDF
+    if (selectedFile.type === 'application/pdf') {
+      // Check if the file size is less than 20MB (20 * 1024 * 1024 bytes)
+      if (selectedFile.size < 20 * 1024 * 1024) {
+        // Call the uploadPitchDeck function
+        uploadPitchDeck();
+
+        // Open the modal
+        document.getElementById('pitchDeck-popup').style.display = 'flex';
+      } else {
+        alert('Selected PDF file is too large. Please select a file smaller than 20MB.');
+      }
+    } else {
+      alert('Please select a PDF file.');
+    }
+  } else {
+    alert('Please select a PDF file before opening the popup.');
+  }
+}
+
+
+
+// Function to close the popup
+function closePitchPopup() {
+  document.getElementById('pitchDeck-popup').style.display = 'none';
+}
+
+   // Show the popup when the page loads
+   window.onload = showPopup;
+
 // Using and expiring the license
-document.getElementById("startBtn").addEventListener("click", async () => {
+async function updateLicense() {
   try {
     // Get the license key from some input or other source
     let licenseKey = localStorage.getItem("licenseKeyValue");
@@ -68,7 +134,7 @@ document.getElementById("startBtn").addEventListener("click", async () => {
   } catch (error) {
     console.error("Error updating license:", error.message);
   }
-});
+}
 
 function startRecording() {
   navigator.mediaDevices
